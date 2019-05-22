@@ -1,0 +1,30 @@
+<div class="lib-alert"
+     [class.lib-alert-success]="type === 'success'"
+     [class.lib-alert-info]="type === 'info'"
+     [class.lib-alert-warning]="type === 'warning'"
+     [class.lib-alert-error]="type === 'error'"
+     [class.lib-alert-has-description]="!!description"
+     [class.lib-alert-no-icon]="!showIcon"
+     [class.lib-alert-closable]="closeable"
+     [class.lib-alert-close]="destroy"
+     [class.lib-alert-left]="horizontalDirection === 'left'"
+     [class.lib-alert-right]="horizontalDirection === 'right'"
+     [class.lib-alert-bottom]="verticalDirection === 'bottom'"
+     [class.lib-alert-top]="verticalDirection === 'top'">
+  <ng-container *ngIf="showIcon">
+    <span class="lib-alert-icon iconfont" *ngIf="type === 'success'">&#xe73c;</span>
+    <span class="lib-alert-icon iconfont" *ngIf="type === 'info'">&#xe607;</span>
+    <span class="lib-alert-icon iconfont" *ngIf="type === 'warning'">&#xe836;</span>
+    <span class="lib-alert-icon iconfont" *ngIf="type === 'error'">&#xe60e;</span>
+  </ng-container>
+  <span class="lib-alert-message" *ngIf="message">{{message}}</span>
+  <span class="lib-alert-description" *ngIf="description">{{description}}</span>
+  <a *ngIf="closeable || closeText" class="lib-alert-close-icon" (click)="closeAlert()">
+    <ng-template #closeDefaultTemplate>
+      <span class="iconfont">&#xe633;</span>
+    </ng-template>
+    <ng-container *ngIf="closeText; else closeDefaultTemplate">
+      <ng-container>{{ closeText }}</ng-container>
+    </ng-container>
+  </a>
+</div>

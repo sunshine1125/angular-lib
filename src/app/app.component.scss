@@ -1,0 +1,10 @@
+div {
+  width: 100%;
+  lib-alert {
+    ::ng-deep {
+      .lib-alert {
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
